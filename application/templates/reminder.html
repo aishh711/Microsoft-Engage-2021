@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1>{{ title }} </h1>
+    <h3>{{user_id}}</h3>
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            {% if not user_reminders %}
+                
+                <h2><b> No reminders </b> </h2>
+                <h4> <b> Create a reminder for online class </b></h4>
+                
+                <a href="/date">
+                    <button class="button button1">Schedule a meeting</button>
+                </a>
+            {% else %}
+                <h1>Please check following reminders</h1>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Action</th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!-- Construct the rest of courses here -->
+                    {% for user_reminder in user_reminders %}
+                    <tr>
+                        <td scope='row'>{{ user_reminder["user_id"] }}</td>
+                        <td>{{ user_reminder["startdate"] }}</td>
+                        <td>{{ user_reminder["startdate"] }}</td> 
+                        <td>
+                            <form action="{{url_for('delete_date')}}" method="POST">
+                                <input type="hidden" name="user_id" value="{{user_reminder['user_id']}}">
+                            <button>Done</button>
+                        </form>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}

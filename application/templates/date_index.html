@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+    
+{% block content %}
+<style>
+    body {
+      background-image: url('static/images/bg3.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+<body>
+    <div class="div_text_align">
+    <h4> <b> Select a date range </b></h4>
+        <br>
+        <br>
+        <form action="" class="form_login" method="post" name="myform">
+        {{form.csrt_token}}
+        <br>
+        <br>
+        <br>
+        <br>
+        {{ form.startdate.label(class="form-label") }}
+        {{ form.startdate(class="datepicker")}}
+        {{ form.hidden_tag()}}
+        <br>
+        <br>
+
+        {{ form.enddate.label(class="form-label") }}
+        {{ form.enddate(class="datepicker form-label")}}
+        {{ form.hidden_tag()}}
+
+        <br>
+        <br>
+        <p>
+        {{ form.submit(class="btn btn-primary")}}
+        </p>
+
+    </form>
+</div>
+</body>
+
+{% endblock %}

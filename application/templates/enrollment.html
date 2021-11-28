@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <h3>{{user_id}}</h3>
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            {% if not classes %}
+                <h3><b>You are not enrolled in any class </b></h3>
+            {% else %}
+                <h3><b>You are enrolled in these courses</b></h3>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Course ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Credits</th>
+                        <th scope="col">Term</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!-- Construct the rest of courses here -->
+                    {% for class in classes %}
+                    <tr>
+                        <td scope='row'>{{ class.r2["courseID"] }}</td>
+                        <td>{{ class.r2["title"] }}</td>
+                        <td>{{ class.r2["description"] }}</td>
+                        <td>{{ class.r2["credits"] }}</td>
+                        <td>{{ class.r2["term"] }}</td> 
+
+                         <form action="{{url_for('preferences')}}" method="POST">
+                            <input type="hidden" name="courseID" value="{{class.r2['courseID']}}">
+                            <input type="hidden" name="title" value="{{class.r2['title']}}">
+                            <input type="hidden" name="term" value="{{class.r2['term']}}">
+                    </form> 
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+    {% extends "layout.html" %}
+   
+    {% block content %}
+    
+    <div class="container">
+         <form name="login" action="" method="post" novalidate>
+        <fieldset class="form-group col-md-12">
+            <legend>{{title}}</legend>     
+                  {{form.hidden_tag()}}
+                 <p>
+                    {{form.choice.label(class="form-label")}}
+                     {{form.choice(class="form-control")}}
+                </p>  
+                {{form.hidden_tag()}}
+                 <p>
+                    {{form.vaccinated.label(class="form-label")}}
+                     {{form.vaccinated(class="form-control" )}}
+                </p>            
+                <p> 
+                    {{ form.submit(class="btn btn-primary") }}
+                </p>            
+        </fieldset>
+        </form>
+    </div>
+    {% endblock %}

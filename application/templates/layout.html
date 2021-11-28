@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MS Engage App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}"/>
+</head>
+<body>
+    
+<div class="container-fluid text-center top-container">
+    <div class="text-center">
+
+    <div class="row">
+        
+        <div class="column">
+            <img class="img-fluid" src="{{ url_for('static', filename = 'images/home3.png') }}">
+        </div>
+        
+        
+    </div>
+    </div>
+</div>
+
+<!-- <div class="text-center"> -->
+<marquee width="70%" direction="left" height="20px">
+<!-- <div class="alert alert-warning" role="alert"> -->
+    Attention !!! Please give your preferences to attend classes for the coming week(In-person OR Remote)
+     <!-- <a href="https://wwww.google.com" class="alert-link">here</a>
+</div> -->
+</marquee>
+
+
+<div class="container">
+    <span class="user2" style="color: white;">Microsoft Hybrid Learning</span>
+
+    {% include "includes/nav.html" %}
+
+    {% if session['username'] %}
+    <span class="user" style="color: white;">Welcome  {{session['username'] }} !!!</span>
+    {%endif%}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

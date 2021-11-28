@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email </th>
+        <th scope="col">Vaccination Status</th>
+        <th scope="col">Preference</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td scope='row'>{{first_name}}</td>
+        <td>{{ last_name }}</td>
+        <td>{{ email }}</td>
+        <td>{{ vaccinated }}</td>
+        <td>{{ choice }}</td>        
+        
+    </tr>
+    
+    </tbody>
+</table>
+
+{% endblock %}

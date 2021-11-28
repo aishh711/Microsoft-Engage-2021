@@ -1,0 +1,41 @@
+    {% extends "layout.html" %}
+
+    {% block content %}
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form name="login" action="" method="post">
+                <fieldset class="form-group">
+                    <legend>{{title}}</legend>
+
+                {{ form.hidden_tag()}}
+                <p>
+                    {{form.email.label(class="form-label")}}<br>
+                    {{form.email(size=35, class="form-control")}}
+                    {% for error in form.email.errors %}
+                        <span class="error-message"> {{ error }}</span>
+                    {%endfor%}
+                </p> 
+                <p>
+                    {{form.password.label}}<br>
+                    {{form.password(size=20, class="form-control")}}
+                    {% for error in form.password.errors %}
+                        <span class="error-message"> {{ error }}</span>
+                    {%endfor%}
+                </p>
+                <p>
+                   
+                   {{ form.submit(class="btn btn-primary") }}
+
+                </p>
+                
+            </fieldset>
+            </form>
+            <a href="/register">
+                <button class="button button1">Register here</button>
+            </a>
+        </div>
+       
+    </div>
+    
+ {% endblock %}

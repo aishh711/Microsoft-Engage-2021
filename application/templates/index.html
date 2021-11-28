@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    body {
+      background-image: url('static/images/bg2.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2><i><b> Welcome to Blended Learning </b></i></h2>
+            <h2><i><b>-----------------------------</b></i></h2>
+
+
+            {% if session['username'] %}
+            <h3><b>Let's get started.</b></h3>
+            
+            {% endif %}
+            <br>
+            {% if not session['username'] %}
+            <a href="/login">
+                <button class="button button1"><b>Please login here </b></button>
+            </a>
+            {% endif %}
+            <br>
+            
+            <a href="/guidelines">
+                <button class="button button1">COVID-19 Guidelines</button>
+            </a>
+            
+        </div>
+    </div>
+    
+{% endblock %}
+<div class="column">
+    <img src="{{ url_for('static', filename = 'images/School.png') }}", class="rounded float-right">
+</div>
+{% include "includes/footer.html" %}
+

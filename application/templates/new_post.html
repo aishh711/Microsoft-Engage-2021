@@ -1,0 +1,43 @@
+{%  extends "layout.html" %}
+{% block content %}
+
+<style>
+    body {
+      background-image: url('static/images/bg3.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form name="New post" action="" method="post">
+            <fieldset class="form-group">
+                <legend>{{title}}</legend>
+
+            {{ form.hidden_tag()}}
+            <p>
+                {{form.title.label(class="form-label")}}<br>
+                {{form.title(size=10, class="form-control")}}
+                {% for error in form.title.errors %}
+                    <span class="error-message"> {{ error }}</span>
+                {%endfor%}
+            </p> 
+            <p>
+                {{form.content.label(class="form-label")}}<br>
+                {{form.content(size=50, class="form-control")}}
+                {% for error in form.content.errors %}
+                    <span class="error-message"> {{ error }}</span>
+                {%endfor%}
+            </p>
+            <p>
+                {{ form.submit(class="btn btn-primary"  ) }}
+            </p>
+
+        </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
